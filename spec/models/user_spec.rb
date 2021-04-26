@@ -31,9 +31,9 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailは@を含まなければ登録できない' do
-        @user.email ='test'
+        @user.email = 'test'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Email is invalid"
+        expect(@user.errors.full_messages).to include 'Email is invalid'
       end
       it 'passwordが空では登録できない' do
         @user.password = ''
@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
       it 'ユーザー本名の姓が全角かな・カナ・漢字以外では登録できない' do
         @user.last_name = '0a'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
       it 'ユーザー本名の名が空では登録できない' do
         @user.first_name = ''
@@ -83,7 +83,7 @@ RSpec.describe User, type: :model do
       it 'ユーザー本名の名が全角かな・カナ・漢字以外では登録できない' do
         @user.first_name = '0a'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
       it 'ユーザー本名の姓（カナ）が空では登録できない' do
         @user.last_name_kana = ''
